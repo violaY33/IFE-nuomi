@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义checkbox， radio样式</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font: 16px sans-serif;
+			color: #aaa;
+		}
+		h1{
+			text-align: center;
+			margin: 20px;
+		}
+		form {
+			width: 200px;
+			margin: 10px auto;
+			padding: 10px;
+			text-align: center;
+			border: 1px solid #ccc;
+		}
+		fieldset {
+			border: none;
+		}
+		.checkboxes {
+			border-bottom: 1px solid #ccc;
+		}
+		label {
+			display: block;
+			margin: 10px;
+			padding: 5px;
+		}
+		input[type="checkbox"], input[type="radio"] {
+			display: none;
+		}
+		.checkboxes label::before {
+			content: "";
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			margin-right: 5px;
+			background-image: url(img/1.png);
+			background-position: 0 16px;
+			vertical-align: bottom;
+		}
+		input[type="checkbox"]:checked+label::before {
+			background-image: url(img/1.png);
+			background-position: 16px 16px;
+		}
+
+		.radios label::before {
+			content: "";
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			margin-right: 5px;
+			background-image: url(img/1.png);
+			background-position: 0 0;
+			vertical-align: bottom;
+		}
+
+		input[type="radio"]:checked+label::before {
+			background-image: url(img/1.png);
+			background-position: 16px 0;
+		}
+		/*****************************/
+		.intro {
+			width: 400px;
+			margin: 0 auto;
+		}
+		p {
+			width: 400px;
+			text-indent: 2em;
+			line-height: 1.5;
+		}
+		code {
+			color: #333;
+			font: 16px sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<h1>自定义checkbox， radio样式</h1>
+	<form>
+		<fieldset class="checkboxes">
+			<input type="checkbox" id="checkbox1" name="checkbox"><label for="checkbox1">checkbox1</label>
+			<input type="checkbox" id="checkbox2" name="checkbox"><label for="checkbox2">checkbox2</label>
+			<input type="checkbox" id="checkbox3" name="checkbox"><label for="checkbox3">checkbox3</label>
+		</fieldset>
+		<fieldset class="radios">
+			<input type="radio" id="radio1" name="radiobox"><label for="radio1">radio1</label>
+			<input type="radio" id="radio2" name="radiobox"><label for="radio2">radio2</label>
+			<input type="radio" id="radio3" name="radiobox"><label for="radio3">radio3</label>
+		</fieldset>
+	</form>
+	<div class="intro">
+		<p>先使用<code>display:none;</code>将<code>input</code>的默认样式隐藏，再使用伪元素<code>::before</code>插入<code>&lt;label&gt;</code>为checkbox与radio设置样式（此处使用雪碧图做背景）。</p>
+		<p>兼容性较好，但不支持IE8及以下。</p>
+	</div>
+</body>
+</html>
