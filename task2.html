@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>有趣的鼠标悬浮模糊效果</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+		h1 {
+			margin: 20px;
+			text-align: center;
+		}
+		.wrap {
+			width: 500px;
+			height: 500px;
+			margin: 0 auto;
+			position: relative;
+		}
+		img {
+			position: absolute;
+			width: 500px;
+			height: 500px;
+		}
+		.wrap:hover img {
+			filter: blur(5px);
+		}
+		p, span {
+			display: block;
+			position: absolute;
+			writing-mode: vertical-lr;
+		}
+		p, span {
+			display: none;
+		}
+		p {
+			font-size: 100px;
+			top: 30px;
+			right: 20px;
+		}
+		span {
+			font-size: 50px;
+			right: 140px;
+			bottom: 20px;
+		}
+		.tb {
+			width: 0;
+			height: 100%;
+			position: absolute;
+			border: 5px solid #fff;
+			border-left: none;
+			border-right: none;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			transition: width 1s;
+		}
+		.lr {
+			width: 100%;
+			height: 0;
+			position: absolute;
+			border: 2px solid #fff;
+			border-top: none;
+			border-bottom: none;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			transition: height 1s;
+
+		}
+		.wrap:hover .tb {
+			width: 100%;
+		}
+		.wrap:hover .lr {
+			height: 100%;
+		}
+		.wrap:hover p, .wrap:hover span{
+			display: block;
+			background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+			-webkit-text-fill-color: transparent;
+			-webkit-background-clip: text;
+			-webkit-background-size: 200% 100%;
+			-webkit-animation: light 4s infinite linear;
+		   }
+		   @-webkit-keyframes light {
+			0%  {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: -100% 0;
+			}
+		   }
+	</style>
+</head>
+<body>
+	<h1>有趣的鼠标悬浮模糊效果</h1>
+	<div class="wrap">
+		<img src="img/2.jpg">
+		<p>天降正义</p>
+		<span>法老之鹰</span>
+		<div class="tb"></div>
+		<div class="lr"></div>
+	</div>
+</body>
+</html>
