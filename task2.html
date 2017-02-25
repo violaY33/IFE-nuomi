@@ -29,62 +29,63 @@
 		.wrap:hover img {
 			filter: blur(5px);
 		}
-		p, span {
-			display: block;
+		.content {
+			width: 80%;
+			height: 30%;
 			position: absolute;
-			writing-mode: vertical-lr;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			text-align: center;
 		}
-		p, span {
+		.p1, .p2 {
 			display: none;
 		}
-		p {
-			font-size: 100px;
-			top: 30px;
-			right: 20px;
+		.p1 {
+			font-size: 60px;
 		}
-		span {
-			font-size: 50px;
-			right: 140px;
-			bottom: 20px;
+		.p2 {
+			font-size: 40px;
 		}
-		.tb {
-			width: 0;
-			height: 100%;
+		.content::before {
+			content: "";
+			display: block;
 			position: absolute;
-			border: 5px solid #fff;
+			left: 50%;
+			height: 100%;
+			width: 0;
+			border: 2px solid #fff;
 			border-left: none;
 			border-right: none;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			margin: auto;
-			transition: width 1s;
+			transition: all 2s;
+			box-sizing: border-box;
 		}
-		.lr {
+		.wrap:hover .content::before {
+			left: 0;
 			width: 100%;
-			height: 0;
+		}
+		.content::after {
+			content: "";
+			display: block;
 			position: absolute;
+			top: 50%;
+			height: 0;
+			width: 100%;
 			border: 2px solid #fff;
 			border-top: none;
 			border-bottom: none;
+			transition: all 2s;
+			box-sizing: border-box;
+		}
+		.wrap:hover .content::after {
 			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			margin: auto;
-			transition: height 1s;
-
-		}
-		.wrap:hover .tb {
-			width: 100%;
-		}
-		.wrap:hover .lr {
 			height: 100%;
 		}
-		.wrap:hover p, .wrap:hover span{
+		.wrap:hover p{
 			display: block;
-			background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+			background-image: -webkit-linear-gradient(left, blue, red 25%, blue 50%, red 75%, blue 100%);
 			-webkit-text-fill-color: transparent;
 			-webkit-background-clip: text;
 			-webkit-background-size: 200% 100%;
@@ -98,16 +99,31 @@
 				background-position: -100% 0;
 			}
 		   }
+		   .intro {
+		   		width: 500px;
+		   		text-indent: 2em;
+		   		margin: 10px auto;
+		   		font-size: 15px;
+		   }
+		   .intro code {
+		   	background-color: #ddd;
+		   }
+
 	</style>
 </head>
 <body>
 	<h1>有趣的鼠标悬浮模糊效果</h1>
 	<div class="wrap">
 		<img src="img/2.jpg">
-		<p>天降正义</p>
-		<span>法老之鹰</span>
-		<div class="tb"></div>
-		<div class="lr"></div>
+		<div class="content">
+			<p class="p1">天降正义！</p>
+			<p class="p2">法老之鹰</p>
+		</div>
+	</div>
+	<div class="intro">
+		<p>背景模糊使用属性<code>filter: blur(5px);</code>不兼容IE。可在Chrome，FireFox，Edge下正常运行。</p>
+		<p>流光效果使用<code>-webkit-text-fill-color</code>+<code>-webkit-background-clip</code>以及渐变背景完成。在IE下无效果。</p>
+		<p>边框展开使用伪元素<code>::before</code>与<code>::after</code>配合<code>transition</code>完成。</p>
 	</div>
 </body>
 </html>
