@@ -4,9 +4,13 @@
 	<meta charset="UTF-8">
 	<title>自定义网页右键菜单</title>
 	<style>
+		body {
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
 		.content {
 			width: 500px;
 			padding: 30px;
+			margin: 0 auto;
 			border: 2px solid #ccc;
 			border-radius: 5px;
 			background-color: #eee;
@@ -29,6 +33,22 @@
 			background-color: #ddd;
 			cursor: pointer;
 		}
+		.intro {
+			width: 400px;
+			margin: 0 auto;
+		}
+		.intro h1 {
+
+		}
+		.intro p {
+			width: 400px;
+			text-indent: 2em;
+			line-height: 1.5;
+		}
+		.intro code {
+			color: #333;
+			font: 16px sans-serif;
+		}
 	</style>
 </head>
 <body>
@@ -39,10 +59,19 @@
 		<li>Menu Item1</li>
 		<li>Menu Item2</li>
 	</div>
+	<div class="intro">
+		<h1>自定义网页右键菜单</h1>
+		<p>说明：右键菜单为<code>oncontextmenu</code>事件。</p>
+		<p>步骤：</p>
+		<p>1. 布局：内容区、自定义菜单</p>
+		<p>2. 隐藏自定义菜单<code>display: none;</code></p>
+		<p>3. 获取所需元素：内容区、自定义菜单、菜单条目、鼠标坐标、浏览器窗口宽高</p>
+		<p>4. 添加事件:为内容区添加事件<code>oncontextmenu</code>,并阻止浏览器默认事件，将菜单设置为<code>display: block;</code>,再以页面剩余宽度高度确定菜单坐标；为菜单条目添加点击事件<code>onclick</code>,点击时弹出条目内容，组织冒泡；为文档添加点击事件<code>onclick</code>，点击时，隐藏菜单，<code>display: none;</code></p>
+	</div>
 	<script>
 		var content = document.getElementsByClassName('content')[0];
 		var contextmenu = document.getElementsByClassName('contextmenu')[0];
-		var items = document.getElementsByTagName('li');
+		var items = document.getElementsByTagName('li');//IE8及以下不兼容getElementsByTagName()
 		content.oncontextmenu = function (e) {
 			e.preventDefault();
 			contextmenu.style.display = 'block';
