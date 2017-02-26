@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义网页右键菜单</title>
+	<style>
+		.content {
+			width: 500px;
+			padding: 30px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			background-color: #eee;
+			font-size: 20px;
+		}
+		.contextmenu {
+			width: 150px;
+			padding: 10px;
+			border: 2px solid #ccc;
+			background-color: #fff;
+			position: absolute;
+			display: none;
+		}
+		.contextmenu li {
+			list-style: none;
+			padding: 5px 3px;
+			font-size: 17px;
+		}
+		.contextmenu li:hover {
+			background-color: #ddd;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		right click to see the menu.
+	</div>
+	<div class="contextmenu">
+		<li>Menu Item1</li>
+		<li>Menu Item2</li>
+	</div>
+	<script>
+		var content = document.getElementsByClassName('content')[0];
+		var contextmenu = document.getElementsByClassName('contextmenu')[0];
+		var items = document.getElementsByTagName('li');
+		content.oncontextmenu = function (e) {
+			e.preventDefault();
+			contextmenu.style.display = 'block';
+			var winWidth = document.documentElement.clientWidth || document.body.clientWidth;
+	        var winHeiht = document.documentElement.clientHeight || document.body.clientHeight;
+			var contextmenuWidth = contextmenu.offsetWidth;
+			var contextmenuHeight = contextmenu.offsetHeight;
+			var X = e.clientX;
+			var Y = e.clientY;
+			var spaceWidth = winWidth - X;
+			var spaceHeight = winHeiht - Y;
+			if (spaceWidth < contextmenuWidth && spaceHeight > contextmenuHeight && X > contextmenuWidth) {
+				contextmenu.style.left = (X - contextmenuWidth) + 'px';
+				contextmenu.style.top = Y + 'px';
+			} else if (spaceWidth > contextmenuWidth && spaceHeight < contextmenuHeight && Y > contextmenuHeight) {
+				contextmenu.style.left = X + 'px';
+				contextmenu.style.top = (Y - contextmenuHeight) + 'px';
+			} else if (spaceWidth < contextmenuWidth && spaceHeight < contextmenuHeight && X > contextmenuWidth && Y > contextmenuHeight) {
+				contextmenu.style.left = (X - contextmenuWidth) + 'px';
+				contextmenu.style.top = (Y - contextmenuHeight) + 'px';
+			} else {
+				contextmenu.style.left = X + 'px';
+				contextmenu.style.top = Y + 'px';
+			}
+			for (var i = 0; i < items.length; i++) {
+				items[i].onclick = function () {
+					alert(this.innerHTML);
+				}
+			}
+		}
+		contextmenu.onclick = function (e) {
+			e.stopPropagation();
+		}
+		document.onclick = function () {
+			contextmenu.style.display = 'none';
+		}
+	</script>
+</body>
+</html>
