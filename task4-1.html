@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用JS实现折叠面板</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.collapsible-group {
+			width: 70%;
+			margin: 20px auto;
+			min-width: 500px;
+		}
+		.collapsible-group h1 {
+			font-size: 20px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			margin-top: 10px;
+			background-color: #eee;
+			cursor: pointer;
+		}
+		.collapsible-group .content {
+			border: 1px solid #ccc;
+			border-top: none;
+			border-radius: 0 0 5px 5px;
+			display: none;
+		}
+		.collapsible-group .content p {
+			padding: 10px;
+		}
+		.intro {
+			width: 500px;
+			margin: 0 auto;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+		.intro h1 {
+			text-align: center;
+		}
+		.intro p {
+			text-indent: 2em;
+			line-height: 1.5;
+			font-size: 20px;
+		}
+		.intro code {
+			color: #111;
+			font: 16px sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<div class="collapsible-group">
+		<div class="item">
+			<h1>Collapsible Group Item #1</h1>
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto omnis animi quaerat inventore tenetur magni quasi impedit eligendi, quos, ut, ea possimus. Adipisci tenetur minima eaque explicabo asperiores soluta neque?</p>
+			</div>
+		</div>
+		<div class="item">
+			<h1>Collapsible Group Item #2</h1>
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, placeat. Ea atque voluptatum ab quibusdam eveniet cumque explicabo unde praesentium totam deleniti doloribus, suscipit mollitia odit tenetur tempore impedit adipisci.</p>
+			</div>
+		</div>
+		<div class="item">
+			<h1>Collapsible Group Item #3</h1>
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat repellat quas nisi rerum fuga dicta blanditiis vel totam ipsam accusamus sunt, quae magni asperiores, similique quisquam impedit explicabo autem numquam.</p>
+			</div>
+		</div>
+	</div>
+	<div class="intro">
+		<h1>使用JS实现折叠面板</h1>
+		<p>用事件<code>onclick</code>控制面板<code>display</code>属性，实现展开与折叠效果，比纯CSS，该实现方法多一功能，即：再次点击可折叠。</p>
+	</div>
+	<script>
+		var items = document.getElementsByClassName('item');
+		var contents = document.getElementsByClassName('content');
+		for (var i = 0; i < items.length; i++) {
+			items[i].index = i;
+			items[i].onclick = function () {
+				//content一开始没有内联display属性，需要用getComputedStyle获取
+				if (window.getComputedStyle(contents[this.index]).display == 'none') {
+					//先将所有折叠，再打开对应一个
+					for (var j =0; j < contents.length; j++) {
+						contents[j].style.display = 'none';
+					}
+					contents[this.index].style.display = 'block';
+				} else {
+					contents[this.index].style.display = 'none';
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用CSS实现折叠面板</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.collapsible-group {
+			width: 70%;
+			margin: 20px auto;
+			min-width: 500px;
+		}
+		.collapsible-group label {
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 1.1;
+			display: block;
+			padding: 10px;
+			margin-top: 5px;
+			cursor: pointer;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #eee;
+			transition: border-radius 1s;
+		}
+		.collapsible-group input {
+			display: none;
+		}
+		.collapsible-group .content {
+			border: 1px solid #ccc;
+			border-top: none;
+			border-width: 0;
+			border-radius: 0 0 5px 5px;
+			height: 0;
+			overflow: hidden;
+			transition: all 2s;
+		}
+		.collapsible-group .content p {
+			margin: 10px;
+			font-size: 15px;
+			line-height: 1.5;
+		}
+		.collapsible-group input[type="radio"]:checked + label {
+			border-radius: 5px 5px 0 0;
+		}
+		.collapsible-group input[type="radio"]:checked + label + .content {
+			border-width: 1px;
+			height: 120px;
+		}
+		.intro {
+			width: 500px;
+			margin: 0 auto;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+		.intro h1 {
+			text-align: center;
+		}
+		.intro p {
+			text-indent: 2em;
+			line-height: 1.5;
+			font-size: 20px;
+		}
+		.intro code {
+			color: #111;
+			font: 16px sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<div class="collapsible-group">
+		<input type="radio" id="item1" name="collapsible-group">
+		<label for="item1">
+			Collapsible Group Item #1
+		</label>
+		<div class="content">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt quae porro eius molestias voluptatum consequatur dolores temporibus eos minima ab recusandae reiciendis iste libero quia, facere ipsa unde. Beatae.</p>
+		</div>
+		<input type="radio" id="item2" name="collapsible-group">
+		<label for="item2">
+			Collapsible Group Item #2
+		</label>
+		<div class="content">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt quae porro eius molestias voluptatum consequatur dolores temporibus eos minima ab recusandae reiciendis iste libero quia, facere ipsa unde. Beatae.</p>
+		</div>
+		<input type="radio" id="item3" name="collapsible-group">
+		<label for="item3">
+			Collapsible Group Item #3
+		</label>
+		<div class="content">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt quae porro eius molestias voluptatum consequatur dolores temporibus eos minima ab recusandae reiciendis iste libero quia, facere ipsa unde. Beatae.</p>
+		</div>
+	</div>
+	<div class="intro">
+		<h1>使用CSS实现折叠面板</h1>
+		<p>利用<code>input[type="radio"]</code>的特性，选中其一，则当前对应面板打开，其余折叠。若要使用过渡效果，则需给面板设置高度，若设置<code>display: none</code>与<code>display: block</code>切换，则无法实现过渡效果。</p>
+	</div>
+</body>
+</html>
