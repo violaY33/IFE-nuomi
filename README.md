@@ -26,3 +26,8 @@
 * 方法二：
 	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task4-1.html);
 	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task4-1.html)
+
+## 5.正则表达式之入门
+* 方法一：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task5.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task5.html)
