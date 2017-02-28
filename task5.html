@@ -95,7 +95,7 @@
 			var strInput = document.getElementById('str');
 			var strValue = strInput.value;
 			var strResult = document.getElementsByTagName('p')[1];
-			var strReg = /(?:^|\s)\b([A-Za-z]+(?:-[A-Za-z]+)*)\s+\1(?=\s|$)/g;
+			var strReg = /(\s|^)([A-Za-z]+(-[A-Za-z]+)*)\s+\2(?=\s|$)/g;
 			var result = strReg.test(strValue);
 			if (result) {
 				strResult.innerHTML = '有重复！请重新输入！';
