@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3实现3D轮播图</title>
+	<!--  -->
+	<style>
+		.carousel {
+			width: 80%;
+			height: 200px;
+			margin: 10px auto;
+			padding: 100px 50px;
+			border: 1px dashed #ccc;
+			position: relative;
+			perspective: 1000px;
+		}
+		.carousel .wrap {
+			width: 180px;
+			height: 180px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			transform-style: preserve-3d;
+			transition: transform 1s;
+		}
+		.carousel img {
+			position: absolute;
+		}
+		.carousel img:nth-child(1) {
+			transform: rotateY(0deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(2) {
+			transform: rotateY(40deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(3) {
+			transform: rotateY(80deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(4) {
+			transform: rotateY(120deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(5) {
+			transform: rotateY(160deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(6) {
+			transform: rotateY(200deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(7) {
+			transform: rotateY(240deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(8) {
+			transform: rotateY(280deg) translateZ(277.3px);
+		}
+		.carousel img:nth-child(9) {
+			transform: rotateY(320deg) translateZ(277.3px);
+		}
+		.carousel button {
+			width: 50px;
+			height: 90px;
+			padding: 0;
+			font-size: 20px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background-color: #fff;
+			border-style: none;
+			border: 1px solid #ccc;
+			cursor: pointer;
+		}
+		.carousel button:hover {
+			color: #fff;
+			background-color: #000;
+		}
+		.carousel .left {
+			left: 5%;
+		}
+		.carousel .right {
+			right: 5%;
+		}
+		.intro {
+			width: 500px;
+			margin: 0 auto;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+		.intro h1 {
+			text-align: center;
+		}
+		.intro p {
+			text-indent: 2em;
+			line-height: 1.5;
+			font-size: 20px;
+		}
+		.intro code {
+			color: #111;
+			font: 16px sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<div class="wrap">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488948726&di=7413119cf31ebeddfd9a645811b81a0c&imgtype=jpg&er=1&src=http%3A%2F%2Fww2.sinaimg.cn%2Fthumb180%2F005GayAAgw1f55i80offxj30am0b1di7.jpg">
+			<img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2101068028,1624278960&fm=21&gp=0.jpg">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488354075710&di=9c5c561a10dcf63340b41b9822fc29ab&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Fthumb180%2F88034c49jw1f54abf5p3fj20lp0c477b.jpg">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488354085689&di=f203856103410bb502edb8cdb7f4d7f7&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Fthumb180%2F005GayAAgw1f55i2c4bdvj30ay09bwga.jpg">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488354109799&di=bcc58c921ef0b5b83006b72dad321d90&imgtype=0&src=http%3A%2F%2Fww1.sinaimg.cn%2Fthumb180%2F005MGw7lgw1f9w9nktxn0j30tt0fuq40.jpg">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488948838&di=5e46720784cbe5dda45c9ebead6da3d8&imgtype=jpg&er=1&src=http%3A%2F%2Fww2.sinaimg.cn%2Fthumb180%2F0067vDoUgw1f7vfak9yy5j316o0qoq6r.jpg">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488354119618&di=7fb5483e7bc53410ca5dafc9cb1cd10f&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Fthumb180%2Fa5cff66djw1f56gyvbs79j21be0qogvh.jpg">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488354138242&di=fd4a9478ba0a4d4e2f1b45766dd76ec6&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D1ce97089855494ee87220f111df5e0e1%2F4605c458ccbf6c816f3ddddeb53eb13533fa4002.jpg">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488356308981&di=52a35bc97e688f5befdf9521df02fbef&imgtype=0&src=http%3A%2F%2Fww1.sinaimg.cn%2Fthumb180%2F6869c3d2gw1f215ptsr45j20e60cstag.jpg">
+		</div>
+		<button class="left">←</button>
+		<button class="right">→</button>
+	</div>
+		<div class="intro">
+			<h1>CSS3实现3D轮播图</h1>
+			<p>要点：</p>
+			<p>1.使用<code>transform: rotateY(...deg) translateZ(...px);</code>将图片围成圆,角度为<code>360/图片数目</code>,距离需用三角函数计算。</p>
+			<p>2.要设置图片容器的宽度与图片宽度相等，否则会出现奇怪的效果。</p>
+		</div>
+	<script>
+		var wrap = document.getElementsByClassName('wrap')[0];
+		var imgs = document.getElementsByTagName('img');
+		var leftBtn = document.getElementsByClassName('left')[0];
+		var rightBtn = document.getElementsByClassName('right')[0];
+		var deg = 0;
+		for (var i = 0; i < imgs.length; i++) {
+			imgs[i].onclick = function () {
+				deg -= 40;
+				wrap.style.transform = 'translate(-50%,-50%) rotateY('+deg+'deg)';
+			}
+		}
+		leftBtn.onclick = function rotateLeft() {
+			deg -= 40;
+			wrap.style.transform = 'translate(-50%,-50%) rotateY('+deg+'deg)';
+		}
+		rightBtn.onclick = function rotateRight() {
+			deg += 40;
+			wrap.style.transform = 'translate(-50%,-50%) rotateY('+deg+'deg)';
+		}
+	</script>
+</body>
+</html>

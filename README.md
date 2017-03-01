@@ -31,3 +31,8 @@
 * 方法一：
 	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task5.html);
 	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task5.html)
+
+## 6.CSS3实现3D轮播图
+* 方法一：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task6.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task6.html)
