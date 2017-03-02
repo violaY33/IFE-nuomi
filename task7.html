@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态数据绑定（一）</title>
+	<style>
+		.intro {
+			width: 500px;
+			margin: 0 auto;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+		.intro h1 {
+			text-align: center;
+		}
+		.intro p {
+			text-indent: 2em;
+			line-height: 1.5;
+			font-size: 20px;
+		}
+		.intro code {
+			color: #111;
+			font: 16px sans-serif;
+		}
+		.intro pre {
+			background-color: #eee;
+			padding: 10px;
+			font-size: 15px;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<div class="intro">
+		<h1>动态数据绑定（一）</h1>
+		<p>描述：</p>
+		<p>实现这样的一个 Observer，要求如下：</p>
+		<ul>
+			<li>传入参数只考虑对象，不考虑数组。</li>
+			<li>new Observer返回一个对象，其 data 属性要能够访问到传递进去的对象。</li>
+			<li>通过 data 访问属性和设置属性的时候，均能打印出右侧对应的信息。</li>
+		</ul>
+		<p>举例：</p>
+		<code>
+			<pre>
+let app1 = new Observer({
+  name: 'youngwind',
+  age: 25
+});
+
+let app2 = new Observer({
+  university: 'bupt',
+  major: 'computer'
+});
+
+// 要实现的结果如下：
+
+app1.data.name // 你访问了 name
+
+app.data.age = 100;  // 你设置了 age，新的值为100
+
+app2.data.university // 你访问了 university
+
+app2.data.major = 'science'  // 你设置了 major，
+新的值为 science
+			</pre>
+		</code>
+		<p>实现思路：</p>
+		<p>将<code>data</code>（即我们要绑定的对象）当作参数，传入<code>Observer</code>构造函数中，在函数的原型上添加2个方法，用来遍历对象自身属性和给属性绑定<code>getter</code>与<code>setter</code>。若对象的属性为对象，则采用递归算法，继续<code>new Observer</code>。</p>
+		<p>试验：</p>
+		<p>打开控制台，输入<code>app.data.user</code>和<code>app.data.user.age=20</code>试试吧！</p>
+		<p>代码中的示例对象为：</p>
+		<code>
+			<pre>
+let data = {
+	user: {
+		name: "李狗蛋",
+		age:"18"
+	},
+	address: {
+		city: "Shanghai"
+	},
+	other: "None"
+}
+			</pre>
+		</code>
+		<p>遗留问题：</p>
+		<p>
+			<ul>
+				<li>只监听的对象的变化，没有处理数组的变化。</li>
+				<li>当你重新set的属性是对象的话，那么新set的对象里面的属性不能调用getter和setter。</li>
+			</ul>
+		</p>
+	</div>
+	<script>
+		//构造观察者函数
+		function Observer(data) {
+			this.data = data;
+			this.walk(data);//调用walk()遍历对象属性
+		}
+
+		let p = Observer.prototype;//观察者原型
+
+		//采用递归思路，深层遍历对象的每一个属性，并为其绑定getter、setter
+		p.walk = function (obj) {
+			let val;
+			for (let key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					val = obj[key];
+					//若对象属性为对象，继续往下找
+					if (typeof val === 'object') {
+						new Observer(val);
+					}
+				}
+				this.convert(key, val);
+			}
+		}
+		p.convert = function (key, val) {
+			Object.defineProperty(this.data, key, {
+				enumerable: true,
+				configurable: true,
+				get: function () {
+					console.log('你访问了' + key);
+					return val;
+				},
+				set: function (newVal) {
+					console.log('你设置了' + key);
+					console.log('新的' + key + '=' + newVal);
+					if (newVal === val) {
+						return;
+					} else {
+						val = newVal;
+					}
+				}
+			})
+		}
+
+		let data = {
+			user: {
+				name: "李狗蛋",
+				age:"18"
+			},
+			address: {
+				city: "Shanghai"
+			},
+			other: "None"
+		}
+
+		let app = new Observer(data);
+	</script>
+</body>
+</html>

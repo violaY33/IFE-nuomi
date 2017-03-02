@@ -36,3 +36,8 @@
 * 方法一：
 	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task6.html);
 	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task6.html)
+
+## 7.动态数据绑定（一）
+* 方法一：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task7.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task7.html)
