@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #eee;
+	min-width: 800px;
+}
+.wrap {
+	min-width: 800px;
+	border: 1px solid #ccc;
+}
+section {
+	width: 48%;
+	height: 700px;
+	box-sizing: border-box;
+	position: absolute;
+	top: 10px;
+}
+.origin-content {
+	left: 2%;
+}
+.markdown-content {
+	right: 2%;
+}
+.origin-content textarea {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 700px;
+	padding: 50px;
+	resize: none;
+	outline: none;
+	border: none;
+	background-color: #000;
+	color: #fff;
+}
+.markdown-content .markdown-text {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	margin: 0 auto;
+	font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+	font-size: 20px;
+	line-height: 1.5;
+	background-color: #fff;
+	overflow: auto;
+}
+.markdown-content h1, h2, h3, h4, h5, h6 {
+	text-align: left;
+	margin-top: 5px;
+}
+.markdown-content p {
+	font-size: 25px;
+}
+.markdown-content img {
+	display: block;
+	margin: 0 auto;
+	max-width: 80%;
+}
+.markdown-content ul, ol {
+	margin-top: 5px;
+	list-style: none;
+}
+.markdown-content ul>li:before {
+	content: "♥";
+	margin-right: 5px;
+}
+.markdown-content ul>li+ul>li {
+	text-indent: 2em;
+}
+.markdown-content ul>li+ul>li:before {
+	content: "♤";
+	margin-right: 5px;
+}
+.markdown-content ul>li+ul>li+ul>li {
+	text-indent: 4em;
+}
+.markdown-content ul>li+ul>li+ul>li:before {
+	content: "☼";
+	margin-right: 5px;
+}
+.markdown-content ol {
+	counter-reset: li;
+}
+.markdown-content ol>li {
+	counter-increment: li;
+}
+.markdown-content ol>li:before {
+	content: counter(li);
+	margin: 5px;
+	color: red;
+}
+.markdown-content ol>li+ol>li {
+	counter-increment: li;
+	text-indent: 2em;
+}
+.markdown-content ol>li+ol>li+ol>li {
+	counter-increment: li;
+	text-indent: 4em;
+}
+.markdown-content blockquote {
+	background-color: #ddd;
+	padding: 13px;
+	margin: 15px;
+	font-size: 15px;
+	border-left: 5px solid #333;
+}
+.markdown-content pre {
+	background-color: #000;
+	color: #0058FF;
+	padding: 10px;
+	margin: 15px;
+	font-size: 15px;
+}
+.markdown-content pre>code {
+	background-color: transparent;
+	color: inherit;
+}
+.markdown-content a {
+	font-family: sans-serif;
+	color: #FF3F6E;
+}
+.markdown-content code {
+	background-color: #FDB2B2;
+	color: #C90000;
+	padding: 2px;
+	border-radius: 3px;
+}

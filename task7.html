@@ -65,7 +65,7 @@ app2.data.major = 'science'  // 你设置了 major，
 			</pre>
 		</code>
 		<p>实现思路：</p>
-		<p>将<code>data</code>（即我们要绑定的对象）当作参数，传入<code>Observer</code>构造函数中，在函数的原型上添加2个方法，用来遍历对象自身属性和给属性绑定<code>getter</code>与<code>setter</code>。若对象的属性为对象，则采用递归算法，继续<code>new Observer</code>。</p>
+		<p>将<code>data</code>（即我们要绑定的对象）当作参数，传入<code>Observer</code>构造函数中，在函数的原型上添加2个方法，用来遍历对象自身属性和给属性绑定<code>getter</code>与<code>setter</code>。若对象的属性为对象，则采用递归算法，继续<code>new Observer()</code>。</p>
 		<p>试验：</p>
 		<p>打开控制台，输入<code>app.data.user</code>和<code>app.data.user.age=20</code>试试吧！</p>
 		<p>代码中的示例对象为：</p>

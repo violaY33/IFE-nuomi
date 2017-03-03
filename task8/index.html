@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式之简易markdown文件解析器</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="wrap">
+			<section class="origin-content">
+				<form>
+					<textarea name="origin-text" id="origin-text">
+![花火](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488565638123&di=2aaa93e9b000059d0a950e92c4a86d3c&imgtype=0&src=http%3A%2F%2Fimg.shouyoutan.com%2FUploads-s%2Fnews%2F2016-03-22%2F56f0c466a3074.JPG "花火")
+# 这是一个超级简易的markdown解析器
+可用`tab`缩进！
+## 1.我们来测试一下
+* 无序列表
+	* item1
+		* item1
+		* item2
+	* item2
+	* item3
+* 有序列表
+	1. item1
+	2. item2
+		1. item2.1
+		2. item 2.2
+	3. item3
+```
+function sayHi() {
+	alert("Hello world!");
+}
+sayHi();
+```
+> 引用部分
+还有一些**行级**元素，比如链接到[IFE-百度前端学院](http://ife.baidu.com "IFE")……再比如`code`...
+## 2.遗留问题
+* 不能解析多层嵌套
+* 编辑框没有自动行号
+* 代码无高亮
+* 某些段落不能正确解析
+(睡醒再改……≧ ﹏ ≦)
+## 3.其他
+寻寻觅觅，复制粘贴，修修整整拼拼……
+					</textarea>
+				</form>
+			</section>
+			<section class="markdown-content">
+				<div class="markdown-text">
+				</div>
+			</section>
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>
