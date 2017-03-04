@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3饼状loading效果</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.wrap {
+			position: relative;
+			margin: 20px auto;
+			width: 350px;
+			height: 600px;
+			border: 1px solid #ccc;
+		}
+		.wrap .ring {
+			position: absolute;
+			top: calc(50% - 50px);
+			left: calc(50% - 50px);
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			background-color: transparent;
+			border: 3px solid #FC1C7B;
+			border-right-color: transparent;
+			border-radius: 50%;
+			animation: rotate-ring 1s linear infinite;
+
+		}
+		.wrap .circle {
+			position: absolute;
+			top: calc(50% - 40px);
+			left: calc(50% - 40px);
+			width: 0;
+			height: 0;
+			border: 40px solid #FC1C7B;
+			border-top-color: #FFBCD2;
+			border-left-color:#FFBCD2;
+			border-radius: 50%;
+
+		}
+		.wrap .semicircle-left {
+			position: absolute;
+			top: calc(50% - 40px);
+			left: calc(50% - 40px);
+			z-index: 3;
+			width: 0;
+			height: 0;
+			border: 40px solid #FC1C7B;
+			border-radius: 50%;
+			border-right-color: transparent;
+			border-bottom-color: transparent;
+			animation: semicircle-left 2s linear infinite;
+		}
+		.wrap .semicircle-right {
+			position: absolute;
+			top: calc(50% - 40px);
+			left: calc(50% - 40px);
+			z-index: 2;
+			width: 0;
+			height: 0;
+			border: 40px solid #FFBCD2;
+			border-radius: 50%;
+			border-left-color: transparent;
+			border-top-color: transparent;
+			animation: semicircle-right 2s linear infinite;
+		}
+		@keyframes rotate-ring {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+		@keyframes semicircle-left {
+			0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(180deg);
+            }
+            50% {
+                transform: rotate(180deg);
+                z-index: 3;
+            }
+            75% {
+                transform: rotate(360deg);
+                z-index: 3;
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+
+		}
+		@keyframes semicircle-right {
+			   0% {
+                transform: rotate(0deg);
+                z-index: 3;
+            }
+            25% {
+                transform: rotate(0deg);
+                z-index: 3;
+            }
+            25.001% {
+                transform: rotate(0deg);
+                z-index: 2;
+            }
+            50% {
+                transform: rotate(180deg);
+                z-index: 2;
+            }
+            75% {
+                transform: rotate(180deg);
+                z-index: 2;
+            }
+            75.001% {
+                transform: rotate(180deg);
+                z-index: 3;
+            }
+            100% {
+                transform: rotate(360deg);
+                z-index: 3;
+            }
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="ring"></div>
+		<div class="circle"></div>
+		<div class="semicircle-left"></div>
+		<div class="semicircle-right"></div>
+	</div>
+</body>
+</html>

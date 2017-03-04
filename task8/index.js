@@ -9,7 +9,6 @@ function init() {
 	textarea.oninput = function (e) {
 		markdownText.innerHTML = markdownParse(e.target.value);
 	}
-	//修复tab键不能缩进的bug
 	textarea.onkeydown =function (e) {
 		if(e.keyCode == 9){
 		       e.preventDefault();
@@ -30,32 +29,38 @@ function markdownParse(str) {
 	var result = "";
 	var lines = str.split('\n');
 	var reader = {
-		index: 0,
-		saved: 0,
-		length: lines.length,
+		index: 0,//行号
+		saved: 0,//保存行号
+		length: lines.length,//总行数
 		read: function () {
+			//如果读到最后一行，返回
 			if (this.eof()) {
 				return;
 			}
-			return lines[this.index++];
+			return lines[this.index++];//读完后，index+1，使每次都读下一行
 		},
 		nextLine: function () {
-			return lines[this.index];
+			return lines[this.index];//读当前行的下一行
 		},
 		eof: function () {
-			return this.index >= this.length;
+			return this.index >= this.length;//判断是否读到最后一行
+		},
+		save: function () {
+			this.save = this.index;//保留当前index
+		},
+		reset: function () {
+			this.index = this.save;//读档
 		}
 	}
 	//没有读到最后一行时
 	while (!reader.eof()) {
-		var line = reader.read();
-		var temporary = line;
+		var line = reader.read();//取出当前行内容，此时index++了
+		var temporary = line;//暂存，待修改
 		//读到空行
 		if (line === "") {
 			result += '\n';
 			continue;
 		}
-		//非空行
 		//解析段落文本
 		var pReg = /^([\u4e00-\u9fa5_a-zA-Z0-9\s]+?)(:?\n|$)/;
 		if (pReg.test(line)) {
@@ -165,7 +170,6 @@ function markdownParse(str) {
 	var strongReg = /\*\*([^*]+?)\*\*/gm;
 	var emReg = /\*([^*]+?)\*/gm;
 	var inlineCodeReg =  /`([^*]+?)`/gm;
-	//在全文中直接替换
 	function parseInline(str) {
 		//解析图片
 		str = str.replace(imgReg, function (match, g1, g2, g3, g4) {
