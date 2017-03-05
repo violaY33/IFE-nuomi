@@ -5,21 +5,17 @@
 	<title>有趣的鼠标悬浮模糊效果</title>
 	<style>
 		* {
-			margin: 0;
 			padding: 0;
+			margin: 0;
 		}
 		body {
 			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
 		}
-		h1 {
-			margin: 20px;
-			text-align: center;
-		}
 		.wrap {
+			position: relative;
 			width: 500px;
 			height: 500px;
-			margin: 0 auto;
-			position: relative;
+			margin: 10px auto;
 		}
 		img {
 			position: absolute;
@@ -30,14 +26,14 @@
 			filter: blur(5px);
 		}
 		.content {
-			width: 80%;
-			height: 30%;
 			position: absolute;
 			top: 0;
 			right: 0;
 			bottom: 0;
 			left: 0;
 			margin: auto;
+			width: 80%;
+			height: 30%;
 			text-align: center;
 		}
 		.p1, .p2 {
@@ -54,13 +50,13 @@
 			display: block;
 			position: absolute;
 			left: 50%;
-			height: 100%;
 			width: 0;
+			height: 100%;
+			box-sizing: border-box;
 			border: 2px solid #fff;
 			border-left: none;
 			border-right: none;
 			transition: all 2s;
-			box-sizing: border-box;
 		}
 		.wrap:hover .content::before {
 			left: 0;
@@ -91,28 +87,27 @@
 			-webkit-background-size: 200% 100%;
 			-webkit-animation: light 4s infinite linear;
 		   }
-		   @-webkit-keyframes light {
-			0%  {
-				background-position: 0 0;
-			}
-			100% {
-				background-position: -100% 0;
-			}
-		   }
-		   .intro {
-		   		width: 500px;
-		   		text-indent: 2em;
-		   		margin: 10px auto;
-		   		font-size: 15px;
-		   }
-		   .intro code {
-		   	background-color: #ddd;
-		   }
+	   @-webkit-keyframes light {
+		0%  {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: -100% 0;
+		}
+	   }
+	   .intro {
+	   		width: 500px;
+	   		text-indent: 2em;
+	   		margin: 10px auto;
+	   		font-size: 15px;
+	   }
+	   .intro code {
+	   	background-color: #ddd;
+	   }
 
 	</style>
 </head>
 <body>
-	<h1>有趣的鼠标悬浮模糊效果</h1>
 	<div class="wrap">
 		<img src="img/2.jpg">
 		<div class="content">
@@ -121,6 +116,7 @@
 		</div>
 	</div>
 	<div class="intro">
+		<h1>有趣的鼠标悬浮模糊效果</h1>
 		<p>背景模糊使用属性<code>filter: blur(5px);</code>不兼容IE。可在Chrome，FireFox，Edge下正常运行。</p>
 		<p>流光效果使用<code>-webkit-text-fill-color</code>+<code>-webkit-background-clip</code>以及渐变背景完成。在IE下无效果。</p>
 		<p>边框展开使用伪元素<code>::before</code>与<code>::after</code>配合<code>transition</code>完成。</p>

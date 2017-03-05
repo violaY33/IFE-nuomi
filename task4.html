@@ -5,37 +5,37 @@
 	<title>使用CSS实现折叠面板</title>
 	<style>
 		* {
-			margin: 0;
 			padding: 0;
+			margin: 0;
 		}
 		.collapsible-group {
 			width: 70%;
-			margin: 20px auto;
 			min-width: 500px;
+			margin: 20px auto;
 		}
 		.collapsible-group label {
-			font-size: 18px;
-			font-weight: 500;
-			line-height: 1.1;
 			display: block;
 			padding: 10px;
 			margin-top: 5px;
-			cursor: pointer;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 1.1;
 			border: 1px solid #ccc;
 			border-radius: 5px;
 			background-color: #eee;
+			cursor: pointer;
 			transition: border-radius 1s;
 		}
 		.collapsible-group input {
 			display: none;
 		}
 		.collapsible-group .content {
+			height: 0;
+			overflow: hidden;
 			border: 1px solid #ccc;
 			border-top: none;
 			border-width: 0;
 			border-radius: 0 0 5px 5px;
-			height: 0;
-			overflow: hidden;
 			transition: all 2s;
 		}
 		.collapsible-group .content p {
@@ -47,8 +47,8 @@
 			border-radius: 5px 5px 0 0;
 		}
 		.collapsible-group input[type="radio"]:checked + label + .content {
-			border-width: 1px;
 			height: 120px;
+			border-width: 1px;
 		}
 		.intro {
 			width: 500px;
@@ -64,8 +64,8 @@
 			font-size: 20px;
 		}
 		.intro code {
-			color: #111;
 			font: 16px sans-serif;
+			color: #111;
 		}
 	</style>
 </head>

@@ -5,21 +5,17 @@
 	<title>自定义checkbox， radio样式</title>
 	<style>
 		* {
-			margin: 0;
 			padding: 0;
+			margin: 0;
 		}
 		body {
 			font: 16px sans-serif;
 			color: #aaa;
 		}
-		h1{
-			text-align: center;
-			margin: 20px;
-		}
 		form {
 			width: 200px;
-			margin: 10px auto;
 			padding: 10px;
+			margin: 10px auto;
 			text-align: center;
 			border: 1px solid #ccc;
 		}
@@ -31,8 +27,8 @@
 		}
 		label {
 			display: block;
-			margin: 10px;
 			padding: 5px;
+			margin: 10px;
 			cursor: pointer;
 		}
 		input[type="checkbox"], input[type="radio"] {
@@ -44,10 +40,10 @@
 			width: 16px;
 			height: 16px;
 			margin-right: 5px;
+			vertical-align: bottom;
 			background-image: url(img/1.png);
 			background-repeat: no-repeat;
 			background-position: -23px -33px;
-			vertical-align: bottom;
 		}
 		input[type="checkbox"]:checked+label::before {
 			background-position: -59px -32px;
@@ -58,10 +54,10 @@
 			width: 16px;
 			height: 16px;
 			margin-right: 5px;
+			vertical-align: bottom;
 			background-image: url(img/1.png);
 			background-repeat: no-repeat;
 			background-position: -24px -10px;
-			vertical-align: bottom;
 		}
 		input[type="radio"]:checked+label::before {
 			background-position: -59px -10px;
@@ -70,19 +66,21 @@
 			width: 400px;
 			margin: 0 auto;
 		}
+		.intro h1 {
+			text-align: center;
+		}
 		.intro p {
 			width: 400px;
 			text-indent: 2em;
 			line-height: 1.5;
 		}
 		.intro code {
-			color: #333;
 			font: 16px sans-serif;
+			color: #333;
 		}
 	</style>
 </head>
 <body>
-	<h1>自定义checkbox， radio样式</h1>
 	<form>
 		<fieldset class="checkboxes">
 			<input type="checkbox" id="checkbox1" name="checkbox"><label for="checkbox1">checkbox1</label>
@@ -95,6 +93,7 @@
 			<input type="radio" id="radio3" name="radiobox"><label for="radio3">radio3</label>
 		</fieldset>
 	</form>
+	<h1>自定义checkbox， radio样式</h1>
 	<div class="intro">
 		<p>先使用<code>display:none;</code>将<code>input</code>的默认样式隐藏，再使用伪元素<code>::before</code>插入<code>&lt;label&gt;</code>为checkbox与radio设置样式（此处使用雪碧图做背景）。</p>
 		<p>兼容性较好，但不支持IE8及以下。</p>

@@ -5,21 +5,17 @@
 	<title>自定义checkbox， radio样式-1</title>
 	<style>
 		* {
-			margin: 0;
 			padding: 0;
+			margin: 0;
 		}
 		body {
 			font: 16px sans-serif;
 			color: #aaa;
 		}
-		h1{
-			text-align: center;
-			margin: 20px;
-		}
 		form {
 			width: 200px;
-			margin: 10px auto;
 			padding: 10px;
+			margin: 10px auto;
 			text-align: center;
 			border: 1px solid #ccc;
 		}
@@ -31,8 +27,8 @@
 		}
 		label {
 			display: block;
-			margin: 10px;
 			padding: 5px;
+			margin: 10px;
 			cursor: pointer;
 		}
 		input[type="checkbox"], input[type="radio"] {
@@ -41,17 +37,15 @@
 			-moz-appearance: none;
 			-ms-appearance: none;
 			appearance: none;
-			outline: 0;
 		    margin-right: 5px;
-		    cursor: pointer;
 		    vertical-align: bottom;
+			outline: 0;
+		    cursor: pointer;
 		}
 		input[type="checkbox"] {
 			width: 16px;
 			height: 16px;
-			background-image: url(img/1.png);
-			background-repeat: no-repeat;
-			background-position: -23px -33px;
+			background: url(img/1.png) no-repeat -23px -33px;
 		}
 		input[type="checkbox"]:checked {
 			background-position: -59px -32px;
@@ -59,9 +53,7 @@
 		input[type="radio"] {
 			width: 16px;
 			height: 16px;
-			background-image: url(img/1.png);
-			background-repeat: no-repeat;
-			background-position: -24px -10px;
+			background: url(img/1.png) no-repeat -24px -10px;
 		}
 		input[type="radio"]:checked {
 			background-position:-59px -10px;
@@ -70,19 +62,21 @@
 			width: 400px;
 			margin: 0 auto;
 		}
-		p {
+		.intro h1 {
+			text-align: center;
+		}
+		.intro p {
 			width: 400px;
 			text-indent: 2em;
 			line-height: 1.5;
 		}
-		code {
+		.intro code {
 			color: #333;
 			font: 16px sans-serif;
 		}
 	</style>
 </head>
 <body>
-	<h1>自定义checkbox， radio样式-1</h1>
 	<form>
 		<fieldset class="checkboxes">
 			<label for="checkbox1"><input type="checkbox" id="checkbox1" name="checkbox">checkbox1</label>
@@ -96,6 +90,7 @@
 		</fieldset>
 	</form>
 	<div class="intro">
+		<h1>自定义checkbox， radio样式-1</h1>
 		<p>用属性<code>appearance</code>删除<code>&lt;input&gt;</code>的默认样式，并用雪碧图作为背景完成自定义样式。</p>
 		<p>兼容性较差，不支持IE浏览器，在FireFox浏览器中无法正常显示，可在Chrome和Edge中正常显示。</p>
 	</div>
