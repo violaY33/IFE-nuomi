@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态数据绑定（一）-1</title>
+	<style>
+		.intro {
+			width: 500px;
+			margin: 0 auto;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+		.intro h1 {
+			text-align: center;
+		}
+		.intro p {
+			text-indent: 2em;
+			line-height: 1.5;
+			font-size: 20px;
+		}
+		.intro code {
+			font: 16px sans-serif;
+			color: #111;
+		}
+	</style>
+</head>
+<body>
+	<div class="intro">
+		<h1>动态数据绑定（一）-1</h1>
+			<p>使用ES6的<code>Proxy</code>实现，但并不完善。</p>
+			<p>此方法无法用作递归，当对象属性为对象时，无法得到正确结果，且无法处理数组变化。</p>
+	</div>
+	<script>
+		function Observer(data){
+		  return new Proxy(data, {
+		    get: function(target, key){
+		           if (target.hasOwnProperty(key)) {
+		           	console.log(`你访问了${key}`);
+		           	return target[key];
+		           }
+		    },
+		    set: function(target, key, newVal){
+		          console.log(`你设置了新的${key}`);
+		          console.log(`新的${key}值为${newVal}`);
+		          if (newVal === target[key]) {
+		          	return;
+		          } else {
+		          	target[key] = newVal;
+		          }
+		    }
+		  })
+		}
+
+		let data = new Observer (
+				{
+					user: {
+						name: "李狗蛋",
+						age:"18"
+					},
+					address: {
+						city: "Shanghai"
+					},
+					other: "None"
+				}
+			)
+	</script>
+</body>
+</html>
