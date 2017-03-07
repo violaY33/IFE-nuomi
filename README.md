@@ -41,7 +41,21 @@
 * 方法一：
 	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task7.html);
 	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task7.html)
+* 方法二：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task7-1.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task7-1.html)
+
 ## 8.正则表达式之简易markdown文件解析器
 * 方法一：
 	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task8/index.html);
 	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task8/index.html)
+
+## 9.CSS3饼状loading效果
+* 方法一：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task9.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task9.html)
+
+## 10.动态数据绑定（二）
+* 方法一：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task10.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task10.html)
