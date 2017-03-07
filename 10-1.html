@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>动态数据绑定（二）</title>
+	<title>动态数据绑定（二）-1</title>
 	<style>
 		.intro {
 			width: 500px;
@@ -31,16 +31,16 @@
 </head>
 <body>
 	<div class="intro">
-		<h1>动态数据绑定（二）</h1>
+		<h1>动态数据绑定（二）-1</h1>
 		<p>完善（一）中，重设属性值为对象时，该对象内的属性无法继承setter、getter,解决方法：</p>
 		<p>在setter上判断属性值是否为对象，若为对象，<code>new Observer(obj)</code>。</p>
 		<p>并且在设置属性时，可调用会掉函数。</p>
+		<p>此方法不可再传入其他参数，只能使用<code>newVal</code>。</p>
 	</div>
 <script>
 		function Observer(data) {
 			this.data = data;
 			this.walk(data);
-			this.events = new Event();
 		}
 
 		let p = Observer.prototype;
@@ -70,46 +70,26 @@
 				set: function (newVal) {
 					console.log('你设置了' + key);
 					console.log('新的' + key + '=' + newVal);
-					_this.events.emit(key, val, newVal);
+					if (typeof newVal === 'object') {
+						new Observer(newVal);
+					}
 					if (newVal === val) {
 						return;
 					} else {
 						val = newVal;
 					}
-					if (typeof newVal === 'object') {
-						new Observer(newVal);
-					}
 				}
 			})
 		}
 
-		p.$watch = function (attr, fn) {
-			this.events.on(attr, fn);
-		}
-
-		function Event(){
-		 	this.events = {};
-		}
-
-		Event.prototype.on = function(attr, fn){
-			if(this.events[attr]){
-				this.events[attr].push(fn);
-			} else {
-				this.events[attr] = [fn];
-			}
-		}
-
-		Event.prototype.off = function(attr){
-			for(let key in this.events){
-				if(this.events.hasOwnProperty(key) && key === attr){
-					delete this.events[key];
+		p.$watch = function (key, fn) {
+			Object.defineProperty(this.data, key, {
+				enumerable: true,
+				configurable: true,
+				set: function (newVal) {
+					fn(newVal);
+					return newVal;
 				}
-			}
-		}
-
-		Event.prototype.emit = function(attr, ...arg){
-			this.events[attr] && this.events[attr].forEach(function(item){
-				item(...arg);
 			})
 		}
 
@@ -126,13 +106,11 @@
 
 		let app = new Observer(data);
 
-		app.$watch('other', function(oldVal, newVal) {
-			console.log(`以前这里有${oldVal}，现在这里有${newVal}`);
-		});
+		app.$watch('other', function(newVal){
+		    console.log(`现在这里有${newVal}`);
+		})
 
-		
 		app.data.other = '老实人';
-
 </script>
 </body>
 </html>
