@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态数据绑定（一）</title>
+	<style>
+		.intro {
+			width: 500px;
+			margin: 0 auto;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+		}
+		.intro h1 {
+			text-align: center;
+		}
+		.intro p {
+			text-indent: 2em;
+			line-height: 1.5;
+			font-size: 20px;
+		}
+		.intro code {
+			font: 16px sans-serif;
+			color: #111;
+		}
+		.intro pre {
+			padding: 10px;
+			font-size: 15px;
+			font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+			background-color: #eee;
+		}
+	</style>
+</head>
+<body>
+	<div class="intro">
+		<h1>动态数据绑定（一）-2</h1>
+		<p>描述：</p>
+		<p>重构第一种方法。避免使用<code>prototype</code>。</p>
+	</div>
+	<script>
+		let Observer = {
+			init: function (data) {
+				this.data = data;
+				this.walk(data);
+			},
+			walk: function (obj) {
+				let val;
+				for (let key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						val = obj[key];
+						if (typeof val === 'object') {
+							let newObj = Object.create(Observer);
+							newObj.init(val);
+						}
+					}
+					this.convert(key, val);
+				}
+			},
+			convert: function (key, val) {
+				Object.defineProperty(this.data, key, {
+					enumerable: true,
+					configurable: true,
+					get: function () {
+						console.log('你访问了' + key);
+						return val;
+					},
+					set: function (newVal) {
+						console.log('你设置了' + key);
+						console.log('新的' + key + '=' + newVal);
+						if (newVal === val) {
+							return;
+						} else {
+							val = newVal;
+						}
+					}
+				})
+			}
+		}
+
+		//test	
+		let data = {
+			user: {
+				name: "李狗蛋",
+				age:"18"
+			},
+			address: {
+				city: "Shanghai"
+			},
+			other: "None"
+		}
+
+		let app = Object.create(Observer);
+		app.init(data);
+		app.data.user.name;
+
+		
+	</script>
+</body>
+</html>

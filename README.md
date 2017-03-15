@@ -44,6 +44,9 @@
 * 方法二：
 	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task7-1.html);
 	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task7-1.html)
+* 方法三：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task7-2.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task7-2.html)
 
 ## 8.正则表达式之简易markdown文件解析器
 * 方法一：
@@ -62,3 +65,6 @@
 * 方法二：
 	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task10-1.html);
 	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task10-1.html)
+* 方法三：
+	* [点击查看效果](https://fareeha666.github.io/IFE-nuomi/task10-2.html);
+	* [点击查看代码](https://github.com/Fareeha666/IFE-nuomi/blob/master/task10-2.html)
